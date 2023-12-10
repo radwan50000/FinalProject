@@ -20,6 +20,75 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
+class Node{
+	String data;
+	Node next;
+	
+	public Node(String data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+
+class LinkedList{
+	Node head;
+	String data;
+	
+	public LinkedList() {
+		this.head = null;
+	}
+	
+	public void insert(String data) {
+		this.data = data;
+		Node newValue = new Node(data);
+		if(this.head == null) {
+			this.head = newValue;
+		}else {
+			Node current = this.head;
+			while(current.next != null) {
+				current = current.next;
+			}
+			current.next = newValue;
+		}
+	}
+	
+	
+	public void print() {
+		Node current = this.head;
+		while(current != null) {
+			System.out.println(current.data);
+			current = current.next;
+		}
+	}
+	
+	
+	public String getDataWPosition(int index) {
+		int i = 0;
+		Node current = this.head;
+		String returnedData = null;
+		while(current != null) {
+			if(i == index) {
+				break;
+			}else current = current.next;
+		}
+		if(!(index > i)) returnedData = current.data; 
+		return returnedData;
+	}
+	
+	
+	public int getLength() {
+		Node current = this.head;
+		int i = 0;
+		while(current != null) {
+			current = current.next;
+			i++;
+		}
+		return i;
+	}
+}
+
+
+
 public class Elbaraka_Resturant {
 	public static Connection connection;
 	public static String[] users;
@@ -28,6 +97,8 @@ public class Elbaraka_Resturant {
 	public static int numOfUsers;
 	
     public static void main(String[] args) {
+    	LinkedList usersData = new LinkedList();
+    	LinkedList passData = new LinkedList();
         //Start of Window Code
         JFrame si = new JFrame("Elbaraka Sign In");
         si.setSize(1280,720);
@@ -137,37 +208,17 @@ public class Elbaraka_Resturant {
 			public void actionPerformed(ActionEvent e) {
 				String url = "jdbc:mysql://localhost:3306/elbaraka";
 				
-				//Start Get the number of users to book place in memory (For Array)====================================
-				try {
-					connection = DriverManager.getConnection(url,"root","");
-					Statement statement = connection.createStatement();
-					ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users;");
-					
-					while(resultSet.next()) {
-						numOfUsers = resultSet.getInt("count");
-						users = new String[numOfUsers];
-						passwords = new String[numOfUsers];
-						users_id = new int[numOfUsers];
-					}
-					
-				}catch(Exception f) {
-					System.out.println(f.getMessage());
-				}
-				//End Get the number of users to book place in memory (For Array)=============================
-				
 				//Start Enter Data to the arrays=========================================
 				try {
 					connection = DriverManager.getConnection(url,"root","");
 					Statement statement = connection.createStatement();
 					ResultSet resultSet = statement.executeQuery("SELECT * FROM users;");
 					
-					int i = 0;
 					while(resultSet.next()) {
-						users[i] = resultSet.getString("name");
-						passwords[i] = resultSet.getString("pass");
-						users_id[i] = resultSet.getInt("id");
-						i = i + 1;
+						usersData.insert(resultSet.getString("name"));
+						passData.insert(resultSet.getString("pass"));
 					}
+					
 					
 				}catch(Exception f) {
 					System.out.println(f.getMessage());
@@ -177,12 +228,13 @@ public class Elbaraka_Resturant {
 				if(e.getSource() == signButton) {
 					String unArchivedPassword = new String(passwordField.getPassword());
 					String username = new String(usernameField.getText());
-					for(int i = 0;i<numOfUsers;i++) {
-						if((username.equals(users[i])) && (unArchivedPassword.equals(passwords[i]))) {
+					for(int i = 0;i<usersData.getLength();++i) {
+						if((username.equals(usersData.getDataWPosition(i))) && (unArchivedPassword.equals(passData.getDataWPosition(i)))) {
 							menuPage.main(new String[0]);
 							si.setVisible(false);
 							alertLabel.setVisible(false);
 							si.dispose();
+							break;
 						}
 					}
 					
