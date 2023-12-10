@@ -65,14 +65,15 @@ class LinkedList{
 	public String getDataWPosition(int index) {
 		int i = 0;
 		Node current = this.head;
-		String returnedData = null;
-		while(current != null) {
+		while(current.next != null) {
 			if(i == index) {
 				break;
-			}else current = current.next;
+			}else{
+				current = current.next;
+				i++;
+			}
 		}
-		if(!(index > i)) returnedData = current.data; 
-		return returnedData;
+		return current.data;
 	}
 	
 	
@@ -219,7 +220,6 @@ public class Elbaraka_Resturant {
 						passData.insert(resultSet.getString("pass"));
 					}
 					
-					
 				}catch(Exception f) {
 					System.out.println(f.getMessage());
 				}
@@ -228,7 +228,9 @@ public class Elbaraka_Resturant {
 				if(e.getSource() == signButton) {
 					String unArchivedPassword = new String(passwordField.getPassword());
 					String username = new String(usernameField.getText());
-					for(int i = 0;i<usersData.getLength();++i) {
+					for(int i = 0;i<usersData.getLength();i++) {
+						System.out.println(usersData.getDataWPosition(i));
+						System.out.println(passData.getDataWPosition(i));
 						if((username.equals(usersData.getDataWPosition(i))) && (unArchivedPassword.equals(passData.getDataWPosition(i)))) {
 							menuPage.main(new String[0]);
 							si.setVisible(false);
