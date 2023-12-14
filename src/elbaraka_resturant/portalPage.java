@@ -58,6 +58,16 @@ public class portalPage {
 		queryButton.setFocusable(false);
 		mainWindow.add(queryButton);
 		
+		queryButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				query.main(new String[0]);
+				mainWindow.setVisible(false);
+				mainWindow.dispose();
+			}
+		});
+		
 		//End of Query Button
 		
 		//Start of Relock Button
@@ -77,6 +87,7 @@ public class portalPage {
 				mainWindow.dispose();
 			}
 		});
+		
 		
 		mainWindow.add(relockButton);
 		

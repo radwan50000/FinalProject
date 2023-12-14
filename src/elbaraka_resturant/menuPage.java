@@ -38,10 +38,10 @@ public class menuPage {
 	public static int user_id;
 	
 	public static void main(String[] args) {
-		//Test java DBBC======================================================================
+		//Start of JDBC URL======================================================================
 		String url = "jdbc:mysql://localhost:3306/elbaraka";
 		
-		//End Test java DBBC====================================================================
+		//End of DBBC URL ====================================================================
 		
 		ImageIcon icon = new ImageIcon("icon.jpg");
 		
