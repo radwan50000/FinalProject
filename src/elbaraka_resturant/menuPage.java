@@ -1066,6 +1066,31 @@ public class menuPage {
 				
 				//End of Confirm Button Event Listener
 		
+				
+		//Start of Relock Button
+		JButton relockButton = new JButton("اعادة الاغلاق");
+		relockButton.setFocusable(false);
+		relockButton.setFont(new Font("MonoLisa",Font.PLAIN,20));
+		relockButton.setBackground(Color.white);
+		relockButton.setForeground(Color.black);
+		relockButton.setBounds(1090,625,150,30);
+		
+		relockButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Elbaraka_Resturant.main(new String[0]);
+				menu.setVisible(false);
+				receipt.setVisible(false);
+				receipt.dispose();
+				menu.dispose();
+			}
+		}
+			
+		);
+		
+		menu.add(relockButton);
+		//End of Relock Button
 		
 		//Start Cancel Reciept Button ////////////////////////////////////////////////
 				

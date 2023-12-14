@@ -215,7 +215,7 @@ public class Elbaraka_Resturant {
 					Statement statement = connection.createStatement();
 					ResultSet resultSet = statement.executeQuery("SELECT * FROM users;");
 					
-					while(resultSet.next()) {
+					while(resultSet.next()){
 						usersData.insert(resultSet.getString("name"));
 						passData.insert(resultSet.getString("pass"));
 					}
@@ -228,11 +228,11 @@ public class Elbaraka_Resturant {
 				if(e.getSource() == signButton) {
 					String unArchivedPassword = new String(passwordField.getPassword());
 					String username = new String(usernameField.getText());
+					
 					for(int i = 0;i<usersData.getLength();i++) {
-						System.out.println(usersData.getDataWPosition(i));
-						System.out.println(passData.getDataWPosition(i));
+
 						if((username.equals(usersData.getDataWPosition(i))) && (unArchivedPassword.equals(passData.getDataWPosition(i)))) {
-							menuPage.main(new String[0]);
+							portalPage.main(new String[0]);
 							si.setVisible(false);
 							alertLabel.setVisible(false);
 							si.dispose();
