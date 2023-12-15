@@ -21,6 +21,14 @@ public class portalPage {
 		mainWindow.setLayout(null);
 		//End Set up page setting
 		
+		//Start of Adding JPanel
+		JPanel yellowPanel = new JPanel();
+		yellowPanel.setBackground(new Color(250,202,11));
+		yellowPanel.setBounds(500 / 2,0,520,390);
+		
+		//End of Adding JPanel
+		
+		
 		//Start of Buttons -------------------------------------- =>>>>>>>>>
 		
 		//Start of menu button
@@ -95,7 +103,7 @@ public class portalPage {
 		//End of Relock Button
 		
 		//End of Buttons ---------------------------------------- =>>>>>>>>>
-		
+		mainWindow.add(yellowPanel);
 		mainWindow.setVisible(true);
 
 	}
