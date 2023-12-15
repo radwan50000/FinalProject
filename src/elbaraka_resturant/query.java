@@ -5,13 +5,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import java.awt.Color;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
@@ -93,7 +91,7 @@ public class query {
 					
 					try {
 						Statement statement = connect.createStatement();
-						ResultSet result = statement.executeQuery("SELECT c.customer_id ,o.order_id ,full_name ,phone ,order_address ,order_date ,total_price FROM customers c inner join orders o on c.customer_id = o.customer_id where phone ="+phoneField.getText());
+						ResultSet result = statement.executeQuery("SELECT c.customer_id ,o.order_id ,full_name ,phone ,order_address ,order_date ,total_price FROM customers c inner join orders o on c.customer_id = o.customer_id where phone ="+phoneField.getText()+" order by order_date desc;");
 						while(result.next()) {
 							model.addRow(new String[] {Integer.toString(result.getInt("customer_id")),
 									Integer.toString(result.getInt("order_id")),
