@@ -99,7 +99,6 @@ public class portalPage {
 		
 		mainWindow.add(relockButton);
 		
-		
 		//End of Relock Button
 		
 		//End of Buttons ---------------------------------------- =>>>>>>>>>

@@ -1068,7 +1068,7 @@ public class menuPage {
 		
 				
 		//Start of Relock Button
-		JButton relockButton = new JButton("اعادة الاغلاق");
+		JButton relockButton = new JButton("اغلاق");
 		relockButton.setFocusable(false);
 		relockButton.setFont(new Font("MonoLisa",Font.PLAIN,20));
 		relockButton.setBackground(Color.white);
@@ -1079,7 +1079,7 @@ public class menuPage {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Elbaraka_Resturant.main(new String[0]);
+				portalPage.main(new String[0]);
 				menu.setVisible(false);
 				receipt.setVisible(false);
 				receipt.dispose();

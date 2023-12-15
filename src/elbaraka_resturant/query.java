@@ -154,6 +154,30 @@ public class query {
 		});
 		//End of Reset Button
 		
+		//Start of Return to Optional Page
+		
+		JButton returnButton = new JButton("اغلاق");
+		returnButton.setBounds(20,20,120,30);
+		returnButton.setBorder(null);
+		returnButton.setFont(new Font("Monolisa",Font.BOLD,19));
+		returnButton.setFocusable(false);
+		
+		returnButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == returnButton) {
+					portalPage.main(new String[0]);
+					window.setVisible(false);
+					window.dispose();
+				}
+				
+			}
+			
+		});
+		
+		window.add(returnButton);
+		//End of Return to Optional Page
 		
 		window.add(resetButton);
 		window.add(phoneField);
