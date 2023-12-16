@@ -61,11 +61,12 @@ public class query {
 		}
 		
 		table = new JTable(model);
-		table.setBounds(0,70,1270,720 - 70 - 20);
 		table.setFont(new Font("Monolisa",Font.BOLD,18));
 		table.setBackground(new Color(219, 209, 175));
 		
 		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(0,70,1270,720 - 70 - 20);
+		scrollPane.getComponent(0).setBackground(new Color(219, 209, 175));
 		
 		//Start of Phone Text Field
 		
@@ -180,7 +181,6 @@ public class query {
 		window.add(resetButton);
 		window.add(phoneField);
 		window.add(searchButton);
-		window.add(table);
 		window.add(scrollPane);
 		
 		//End Adding Table Structure
